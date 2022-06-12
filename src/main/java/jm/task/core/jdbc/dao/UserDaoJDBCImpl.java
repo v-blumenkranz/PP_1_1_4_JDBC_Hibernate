@@ -73,6 +73,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 user.setId(id);
                 userList.add(user);
             }
+            resultSet.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
