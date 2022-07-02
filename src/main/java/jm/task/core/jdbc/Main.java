@@ -8,8 +8,9 @@ import jm.task.core.jdbc.util.Util;
 import java.sql.SQLException;
 
 public class Main {
-    public static void main(String[] args) {
-        UserDaoHibernateImpl impl = new UserDaoHibernateImpl();
+    public static void main(String[] args) throws SQLException {
+        UserDao impl = new UserDaoHibernateImpl();
+        impl.dropUsersTable();
         impl.createUsersTable();
         impl.saveUser("Валерия", "Яровцева", (byte) 24);
         impl.saveUser("Алексей", "Федоров", (byte) 31);
@@ -17,8 +18,8 @@ public class Main {
         impl.saveUser("Ричард", "Сапогов", (byte) 35);
         impl.removeUserById(2);
         impl.getAllUsers();
-        impl.cleanUsersTable();
-        impl.dropUsersTable();
+        //impl.cleanUsersTable();
+        //impl.dropUsersTable();
 
         Util.getSessionFactory().close();
     }
